@@ -86,6 +86,48 @@ namespace Modul3HW2
             _language = language;
         }
 
+        public void PrintAllContacts()
+        {
+            for (var j = GetLanguage(_language).Length - 1; j > 0; j--)
+            {
+                if (_differentLanguageGroups[_language].ContainsKey($"{GetLanguage(_language)[j]}"))
+                {
+                    Console.WriteLine($"{GetLanguage(_language)[j]}:");
+                    for (var k = 0; k < _differentLanguageGroups[_language][$"{GetLanguage(_language)[j]}"].Count; k++)
+                    {
+                        Console.WriteLine($"\t{_differentLanguageGroups[_language][$"{GetLanguage(_language)[j]}"][k].FullName}\t\t" +
+                            $"{_differentLanguageGroups[_language][$"{GetLanguage(_language)[j]}"][k].Number}");
+                    }
+                }
+            }
+
+            try
+            {
+                Console.WriteLine("#:");
+                for (var k = 0; k < _differentLanguageGroups[_language]["#"].Count; k++)
+                {
+                    Console.WriteLine($"\t{_differentLanguageGroups[_language]["#"][k].FullName}\t\t" +
+                        $"{_differentLanguageGroups[_language]["#"][k].Number}");
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                Console.WriteLine("0-9:");
+                for (var k = 0; k < _differentLanguageGroups[_language]["0-9"].Count; k++)
+                {
+                    Console.WriteLine($"\t{_differentLanguageGroups[_language]["0-9"][k].FullName}\t\t" +
+                        $"{_differentLanguageGroups[_language]["0-9"][k].Number}");
+                }
+            }
+            catch
+            {
+            }
+        }
+
         private string GetLanguage(string language)
         {
             switch (language)
